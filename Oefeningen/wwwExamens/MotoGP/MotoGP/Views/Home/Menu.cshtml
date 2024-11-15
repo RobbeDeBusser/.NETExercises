@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewData["Title"] = "Menu";
+    int bannerNr = (int)ViewData["BannerNr"];
+}
+<img src="~/images/banners/banner@(bannerNr).jpg" class="w-100 h-auto" />
+
+<div class="d-flex flex-row">
+    <div class="d-flex flex-column">
+        <a asp-controller="Info" asp-action="ListRaces"><img src="~/images/banners/races.png" class="img-fluid" /></a>
+        <a asp-controller="Info" asp-action="ListTeams"><img src="~/images/banners/teams.png" class="img-fluid" /></a>
+    </div>
+    <div class="d-flex flex-column">
+        <a asp-controller="Info" asp-action="ListRiders"><img src="~/images/banners/riders.png" class="img-fluid" /></a>
+        <a asp-controller="Shop" asp-action="OrderTicket"><img src="~/images/banners/tickets.png" class="img-fluid" /></a>
+    </div>
+</div>

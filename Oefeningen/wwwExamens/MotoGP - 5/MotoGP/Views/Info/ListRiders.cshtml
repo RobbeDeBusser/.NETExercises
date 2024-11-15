@@ -1,0 +1,17 @@
+﻿@model IEnumerable<MotoGP.Models.Rider>
+@{
+}
+
+<div class="riders">
+    @foreach(var item in Model)
+    {
+        <div class="rider">
+            <img src="~/images/riders/@(item.Number).jpg"/>
+            <div>
+                <img src="~/images/flags/@(item.Country.CountryID).png"/>
+                <h2>@item.Number</h2>
+            </div>
+            <p>@(item.FirstName) @(item.LastName)</p>
+        </div>
+    }
+</div>

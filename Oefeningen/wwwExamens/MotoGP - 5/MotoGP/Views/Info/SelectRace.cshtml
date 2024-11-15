@@ -1,0 +1,31 @@
+﻿@model MotoGP.Models.ViewModels.SelectRaceViewModel
+@{
+}
+<select asp-for="raceID" asp-items="Model.Races" onchange="{ window.location.href = '@Url.Action("SelectRace", "Info")?raceID=' + this.value; }">
+    <option value="0">-- Select a race --</option>
+</select>
+<br />
+@if(Model.raceID != 0)
+{
+        <div class="row-margin">
+            <img src="~/images/races/@(Model.raceID).jpg"/>
+        @foreach(var item in Model.RaceList)
+        {
+            <div>
+                <p>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </p>
+                <p>
+                    Length: @Html.DisplayFor(modelItem=>item.Length) m
+                </p>
+                <p>
+                    Date: @Html.DisplayFor(modelItem=>item.Date)
+                </p>
+                <p>
+                    @Html.DisplayFor(modelItem=>item.Description)
+                </p>
+            </div>
+        }
+    </div>
+    <a asp-controller="Home" asp-action="Menu">Back</a>
+}

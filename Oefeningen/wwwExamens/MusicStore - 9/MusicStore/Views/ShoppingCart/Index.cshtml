@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MusicStore.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<h1>Shopping Cart</h1>
+<h2>Review your albums</h2>
+
+<table class="mb-5">
+    <tr class="border-bottom border-top fw-bold">
+        <th class="py-3 ps-2 pe-5">Album</th>
+        <th class="py-3 ps-2 pe-5">Price (each)</th>
+        <th class="py-3 ps-2 pe-5">Quantity</th>
+        <th class="py-3 ps-2 pe-5">Total</t>
+        <th class="py-3 ps-2 pe-5"></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr class="border-bottom">
+            <td class="py-3 ps-2 pe-5">
+                <a asp-controller="Store" asp-action="Details" asp-route-id="@item.AlbumID">@Html.DisplayFor(modelItem => item.Album.Title)</a>
+            </td>
+            <td class="py-3 ps-2 pe-5">@Html.DisplayFor(modelItem => item.Album.Price) euro</td>
+            <td class="py-3 ps-2 pe-5">@Html.DisplayFor(modelItem => item.Count)</td>
+            <td class="py-3 ps-2 pe-5">@(item.Album.Price * item.Count) euro</td>
+            <td class="py-3 ps-2 pe-5">
+                <a asp-controller="ShoppingCart" asp-action="Subtract" asp-route-id="@item.CartItemID" class="border-end px-2 border-secondary border-2">-</a>
+                <a asp-controller="ShoppingCart" asp-action="Add" asp-route-id="@item.CartItemID" class="border-end px-2 border-secondary border-2">+</a>
+                <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@item.CartItemID" class="px-2">Remove</a>
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    <a asp-controller="Checkout" asp-action="Create" class="border-end pe-2 border-2">Checkout</a>
+    <a asp-controller="Home" asp-action="Index">Back to home</a>
+</div>

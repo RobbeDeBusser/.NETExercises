@@ -1,0 +1,46 @@
+﻿@model MotoGP.Models.ViewModels.SelectTicketViewModel
+@{
+}
+<select asp-for="raceID" asp-items="Model.Races" onchange="{ window.location.href = '@Url.Action("ListTickets", "Shop")?raceID=' + this.value; }">
+    <option value="0">-- Select a race --</option>
+</select>
+<br />
+
+@if (Model.TicketList.Count() != 0)
+{
+    <table>
+        <tr>
+            <th>@Html.DisplayNameFor(model=>model.TicketList[0].OrderDate)</th>
+            <th>@Html.DisplayNameFor(model=>model.TicketList[0].Name)</th>
+            <th>@Html.DisplayNameFor(model=>model.TicketList[0].Email)</th>
+            <th>@Html.DisplayNameFor(model=>model.TicketList[0].Address)</th>
+            <th>@Html.DisplayNameFor(model => model.TicketList[0].Country)</th>
+            <th>@Html.DisplayNameFor(model => model.TicketList[0].Race)</th>
+            <th>@Html.DisplayNameFor(model => model.TicketList[0].Number)</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.TicketList)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.OrderDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                <td>@Html.DisplayFor(modelItem => item.Country.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Race.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Number)</td>
+                @if(item.Paid == true)
+                {
+                    <td>Paid</td>
+                } else
+                {
+                    <td><a asp-action="EditTicket" asp-route-id="@(item.TicketID)">Pay</a></td>
+                }
+            </tr>
+        }
+    </table>
+} else
+{
+    <p>No tickets ordered for this race</p>
+}
+<a asp-controller="Home" asp-action="Menu">Back</a>

@@ -1,0 +1,69 @@
+﻿@model MotoGP.Models.Ticket
+@{
+    var countries = (IEnumerable<SelectListItem>)ViewData["Countries"];
+    var races = (IEnumerable<SelectListItem>)ViewData["Races"];
+
+}
+<style>
+    .row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .middle-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .display-vertical {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .row-reverse {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: start;
+    }
+</style>
+<p>Please fill out the following fields:</p>
+<form asp-action="Create">
+    <label asp-for="Name">@Html.DisplayNameFor(model =>model.Name)</label>
+    <input asp-for="Name"/>
+    <br />
+    <label asp-for="Email">@Html.DisplayNameFor(model => model.Email)</label>
+    <input asp-for="Email" />
+    <br />
+    <label asp-for="Address">@Html.DisplayNameFor(model => model.Address)</label>
+    <input asp-for="Address" />
+    <br />
+    <label asp-for="CountryID">@Html.DisplayNameFor(model=>model.Country)</label>
+    <select asp-for="CountryID" asp-items="countries"></select>
+    <br />
+    <div class="RaceID row">
+        <div class="middle-col">
+            <label asp-for="RaceID">@Html.DisplayNameFor(model => model.Race)</label>
+        </div>
+        <div class="display-vertical">
+            @foreach (var race in races)
+            {
+                <div class="row-reverse">
+                    <label asp-for="@(race.Value)">@(race.Text)</label>
+                    <input type="radio" id="@(race.Value)" name="RaceID" value=@race.Value asp-for="RaceID">
+                </div>
+            }
+        </div>
+    </div>
+    <br />
+    <label asp-for="Number">@Html.DisplayNameFor(model =>model.Number)</label>
+    @for(int i=1;i<=6; i++)
+    {
+        string isChecked = (i == 1) ? "checked" : "";
+        <input type="radio" id="@(i)" name="Number" value="@(i)" @isChecked asp-for="Number"/>
+        <label asp-for="@(i)">@(i)</label>
+    }
+    <br />
+    <input type="submit" value="Order"/>
+</form>
+<a asp-controller="Home" asp-action="Menu">Back</a>

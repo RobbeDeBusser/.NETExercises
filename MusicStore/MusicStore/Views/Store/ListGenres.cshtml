@@ -1,0 +1,25 @@
+﻿@model List<MusicStore.Models.Genre>
+
+@{
+    ViewData["Title"] = "Genres";
+}
+
+<h1>Genres</h1>
+<h2>Select</h2>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+    </tr>
+    @foreach (var genre in Model)
+    {
+        <tr>
+            <td>
+                <a asp-controller="Store" asp-action="ListAlbums" asp-route-id="@(genre.GenreID)">
+                    @Html.DisplayFor(modelItem => genre.Name)
+                </a>
+            </td>
+        </tr>
+    }
+</table>

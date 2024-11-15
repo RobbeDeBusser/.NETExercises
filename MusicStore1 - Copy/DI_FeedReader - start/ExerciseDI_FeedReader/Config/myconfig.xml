@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<implementations>
+	<implementation>
+		<interface>ExerciseDI_FeedReader.IFeedReader, ExerciseDI_FeedReader</interface>
+		<instance>ExerciseDI_FeedReader.YoutubeFeedReader, ExerciseDI_FeedReader</instance>
+	</implementation>
+</implementations>

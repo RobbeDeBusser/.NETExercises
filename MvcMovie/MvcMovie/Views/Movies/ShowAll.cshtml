@@ -1,0 +1,16 @@
+﻿@model IEnumerable<MvcMovie.Models.Rating>
+
+@{
+    ViewData["Title"] = "Movies and Ratings";
+}
+
+@foreach (var item in Model)
+   {
+       <h1>@item.Name</h1>
+       <ul>
+        @foreach (var movie in item.Movies)
+        {
+            <h3>@movie.Title</h3>
+        }
+       </ul>
+   }

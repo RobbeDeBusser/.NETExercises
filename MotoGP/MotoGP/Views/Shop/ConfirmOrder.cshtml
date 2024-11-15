@@ -1,0 +1,10 @@
+﻿@model MotoGP.Models.Ticket
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Confirmation";
+    string currentDate = DateTime.Now.ToString("dd/MM/yyyy");
+}
+
+<p>Thank you <b>@Model.Name</b> for ordering tickets for the race <b>@Model.Race.Name</b> on <b>@Model.Race.Date.ToString("dd/MM/yyyy")</b>. Your booking is registered on <b>@currentDate</b>. We will send the <b>@Model.Number</b> tickets as soon as possible.</p>
+
+<a asp-controller="Home" asp-action="Menu">Back</a>

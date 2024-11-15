@@ -1,0 +1,25 @@
+﻿@{
+    var banners = new List<String>
+{ "bannerRaces.jpg", "bannerRiders.jpg", "bannerTeams.jpg", "bannerTickets.jpg" };
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData.["Title"] - MotoGP</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        .width {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="~/images/banners/@banners[(int)ViewData["BannerNr"]]" class="width" />
+        <h1>@ViewData["Title"]</h1>
+        @RenderBody()
+    </div>
+</body>
+</html>

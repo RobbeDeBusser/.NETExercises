@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewData["Title"] = "Menu";
+    int bannerNr = (int)ViewData["BannerNr"];
+}
+<style>
+    .width {
+        width: 100%;
+    }
+
+    .centered-container {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        justify-content: center;
+        align-items: center;
+        row-gap: 20px;
+        margin-top: 20px;
+    }
+
+        .centered-container a {
+            display: block;
+        }
+
+        .centered-container img {
+            width: 250px;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+</style>
+
+<img src="~/images/banners/banner@(bannerNr).jpg" class="width" />
+
+<div class="centered-container">
+    <a asp-controller="Info" asp-action="ListRaces">
+        <img src="~/images/banners/races.png" />
+    </a>
+    <a asp-controller="Info" asp-action="ListTeams">
+        <img src="~/images/banners/teams.png" />
+    </a>
+    <a asp-controller="Info" asp-action="ListRiders">
+        <img src="~/images/banners/riders.png" />
+    </a>
+    <a asp-controller="Shop" asp-action="OrderTicket">
+        <img src="~/images/banners/tickets.png" />
+    </a>
+</div>

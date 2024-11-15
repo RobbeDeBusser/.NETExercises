@@ -1,0 +1,8 @@
+﻿@model MotoGP.Models.Race
+@{
+}
+<h2>@Html.DisplayFor(model => model.Date) - @(Model.Country)</h2>
+<img src="~/images/races/@(Model.RaceID).jpg"/>
+<p>@Model.Description</p>
+
+<a asp-controller="Home" asp-action="Menu">Back</a>

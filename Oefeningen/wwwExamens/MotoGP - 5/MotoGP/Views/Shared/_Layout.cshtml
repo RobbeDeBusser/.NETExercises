@@ -1,0 +1,42 @@
+﻿@{
+    var banners = new List<String>{ "bannerRaces.jpg", "bannerRiders.jpg", "bannerTeams.jpg", "bannerTickets.jpg" };
+    int bannerNr = (int)ViewData["BannerNr"];
+    string bannerLink = banners[bannerNr];
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@(ViewData["Title"]) - MotoGP</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<style>
+    .riders {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 50%;
+    }
+
+    .rider {
+        background-color: darkgray;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+        .rider div {
+            display: flex;
+            justify-content: space-between;
+        }
+</style>
+<body>
+    <a asp-controller="Home" asp-action="Menu"><img src="~/images/banners/@(bannerLink)" /></a>
+    <h1>@(ViewData["Title"])</h1>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

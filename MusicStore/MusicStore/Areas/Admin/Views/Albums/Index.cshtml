@@ -1,0 +1,78 @@
+﻿@model IEnumerable<MusicStore.Models.Album>
+
+@{
+    ViewData["Title"] = "Index";
+    var genres = (IEnumerable<SelectListItem>)ViewData["Genre"];
+    var artists = (IEnumerable<SelectListItem>)ViewData["Artist"];
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action="Index" method="get">
+    <div>
+        <div>
+            <label>Genre: </label>
+            <select name="genreID" onchange="this.form.submit()">
+                <option value="0">~ Select a genre ~</option>
+                @foreach (var genre in genres)
+                {
+                    <option value="@genre.Value" selected="@(genre.Value.ToString() == ViewData["genreID"].ToString() ? "selected" : null)">@genre.Text</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label>Artist: </label>
+            <select name="artistID" onchange="this.form.submit()">
+                <option value="0">~ Select an artist ~</option>
+                @foreach (var artist in artists)
+                {
+                    <option value="@artist.Value" selected="@(artist.Value.ToString() == ViewData["artistID"].ToString() ? "selected" : null)">@artist.Text</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label>Title: </label>
+            <input type="text" name="title" placeholder="Enter title of the album" value="@ViewData["text"]" oninput="document.getElementById('filterForm').submit()">
+        </div>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Artist)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Artist.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AlbumID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.AlbumID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.AlbumID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,5 @@
+﻿@model MotoGP.Models.Ticket
+@{
+}
+<p>Thank you <b>@Html.DisplayFor(t => t.Name)</b> for ordering tickets for the race in <b>@Html.DisplayFor(t => t.Race.Name)</b> on <b>@Html.DisplayFor(t => t.Race.Date)</b>. Your booking is registered on <b>@Html.DisplayFor(t => t.OrderDate)</b>. We will send the <b>@Html.DisplayFor(t => t.Number)</b> tickets as soon as possible.</p>
+<a asp-controller="Home" asp-action="Menu">Back</a>

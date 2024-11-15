@@ -1,0 +1,35 @@
+﻿<style>
+    .rider-card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        display: inline-block;
+        width: calc(25% - 20px); /* Four riders per row */
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+        .rider-card img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+</style>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Riders";
+}
+
+@foreach (var rider in Model)
+{
+    <div class="rider-card">
+        <img src="~/images/riders/@(rider.Number).jpg" />
+        <br />
+        <img src="~/images/flags/@(rider.CountryID).png" />
+        <br />
+        <span>@rider.Number - @(rider.FirstName) @(rider.LastName)</span>
+    </div>
+}
+<br />
+<a asp-controller="Home" asp-action="Menu">Back</a>

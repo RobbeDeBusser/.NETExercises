@@ -1,0 +1,13 @@
+﻿<div class="dropdown">
+    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Genres
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        @foreach (var genre in Model)
+        {
+            <a class="dropdown-item" asp-controller="Store" asp-action="ListAlbums" asp-route-id="@(genre.GenreID)">@genre.Name</a>
+        }
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" asp-controller="Store" asp-action="ListGenres">More...</a>
+    </div>
+</div>

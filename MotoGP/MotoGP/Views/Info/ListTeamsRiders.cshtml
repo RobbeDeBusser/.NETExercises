@@ -1,0 +1,25 @@
+﻿@model MotoGP.Models.ViewModels.SelectTeamsViewModel
+@{
+}
+@foreach (var item in Model.TeamList)
+{
+    <a asp-action="ListTeamsRiders" asp-route-teamID="@item.TeamID">
+        <img src="~/images/teams/@(item.Logo)" />
+    </a>
+}
+@if (Model.RiderList.Count() > 0)
+{
+    <div class="flex-column d-flex">
+        @foreach (var driver in Model.RiderList)
+        {
+            <div class="rider">
+                <img src="~/images/riders/@(driver.Number + ".jpg")" />
+                <div>
+                    <img src="~/images/flags/@(driver.Country.CountryID+".png")" />
+                    <h2>@driver.Number</h2>
+                </div>
+                <p>@(driver.FirstName) @(driver.LastName)</p>
+            </div>
+        }
+    </div>
+}

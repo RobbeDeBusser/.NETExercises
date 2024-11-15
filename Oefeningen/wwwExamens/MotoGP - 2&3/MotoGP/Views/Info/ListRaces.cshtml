@@ -1,0 +1,21 @@
+﻿@model IEnumerable<MotoGP.Models.Race>
+@{
+    string month = "";
+}
+
+@foreach(var item in Model)
+{
+    @if (item.Date.ToString("MMMM") == month)
+    {
+        <p>@Html.DisplayFor(modelItem => item.Date) <a asp-action="ShowRace" asp-route-id="@item.RaceID">@item.Name</a></p>
+    }
+    else
+    {
+        month = item.Date.ToString("MMMM");
+        <h2>@char.ToUpper(month[0])@month.Substring(1)</h2>
+        <p>@Html.DisplayFor(modelItem => item.Date) <a asp-action="ShowRace" asp-route-id="@item.RaceID">@item.Name</a></p>
+    }
+}
+<p>
+    <a asp-controller="Home" asp-action="Menu">Back</a> | <a asp-controller="Info" asp-action="BuildMap">Races on map</a> | <a asp-controller="Info" asp-action="SelectRace">One by one</a>
+</p>

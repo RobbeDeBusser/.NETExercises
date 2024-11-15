@@ -1,0 +1,90 @@
+﻿@model IEnumerable<MusicStore.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+
+    var total = 0;
+
+    int discount = (int)ViewData["Discount"];
+}
+
+<h2>Shopping Cart</h2>
+
+<p>
+    <h4>Review your albums</h4>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Album)
+            </th>
+            <th>
+                Price (each)
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Total
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            total += item.Album.Price * item.Count;
+            <tr>
+                <td>
+                    <a asp-controller="Store" asp-action="Details" asp-route-id="@item.Album.AlbumID">
+                        @Html.DisplayFor(modelItem => item.Album.Title)
+                        (@Html.DisplayFor(modelItem => item.Album.Artist.Name))
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Album.Price) euro
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Count)
+                </td>
+                <td>
+                    @(item.Count * item.Album.Price) euro
+                </td>
+                <td>
+                    <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@item.CartItemID">Remove from cart</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <thead>
+        <tr>
+            <th>
+                Discount
+            </th>
+            <th>
+
+            </th>
+            <th>
+            </th>
+            <th>@discount euro</th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>
+                Total
+            </th>
+            <th>
+
+            </th>
+            <th>
+            </th>
+            <th>@(total-discount) euro</th>
+            <th></th>
+        </tr>
+    </thead>
+</table>
+
+<a asp-controller="Checkout" asp-action="Create">Checkout</a> |
+<a asp-controller="Home" asp-action="Index">Back to Home</a>

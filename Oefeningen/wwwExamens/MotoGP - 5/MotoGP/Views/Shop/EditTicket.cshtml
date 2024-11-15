@@ -1,0 +1,54 @@
+﻿@model MotoGP.Models.Ticket
+@{
+
+}
+
+<table>
+    <tr>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model=>model.Name)</td>
+        <td>@Html.DisplayFor(model => model.Name)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Email)</td>
+        <td>@Html.DisplayFor(model => model.Email)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Address)</td>
+        <td>@Html.DisplayFor(model => model.Address)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Country)</td>
+        <td>@Html.DisplayFor(model => model.Country)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Race)</td>
+        <td>@Html.DisplayFor(model => model.Race)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Number)</td>
+        <td>@Html.DisplayFor(model => model.Number)</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <form asp-action="EditTicket" method="post">
+                <div class="flex-column">
+                    <input type="hidden" asp-for="TicketID"/>
+                    <input type="hidden" asp-for="Name" />
+                    <input type="hidden" asp-for="Email" />
+                    <input type="hidden" asp-for="Address" />
+                    <label asp-for="Paid">Paid</label>
+                    <input type="checkbox" asp-for="Paid">
+                </div>
+                <br />
+                <input type="submit" value="Register" />
+            </form>
+        </td>
+    </tr>
+</table>
+
+<a asp-controller="Home" asp-action="Menu">Back</a>

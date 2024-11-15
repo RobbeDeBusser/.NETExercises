@@ -1,0 +1,12 @@
+﻿@model IEnumerable<MotoGP.Models.Race>
+@{
+
+}
+<img src="~/images/banners/map.png" usemap="#workmap" />
+<map name="workmap">
+    @foreach (var item in Model)
+    {
+        <area shape="circle" coords="@item.X, @item.Y, 10" alt="@item.Name" href="ShowRace/@(item.RaceID)"/>
+    }
+</map>
+<p><a asp-controller="Home" asp-action="Menu">Back</a> 

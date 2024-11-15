@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MotoGP.Models.Team>
+@{
+}
+<style>
+    .teams {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .team {
+        background-color: darkgray;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .width {
+        max-width: 40%;
+    }
+</style>
+<div class="width">
+    <div class="teams">
+        @foreach (var item in Model)
+        {
+            <div class="team">
+                <img src="~/images/teams/@(item.Logo)" />
+                <p>
+                    @item.Name
+                </p>
+                <div class="margin">
+                    @foreach (var rider in item.Riders)
+                    {
+                        <p>@rider.FirstName @rider.LastName</p>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<p><a asp-controller="Home" asp-action="Menu">Back</a> | <a asp-controller="Info" asp-action="ListTeamsRiders">Teams & Riders</a></p>

@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Races";
+}
+
+@{
+    var dateFormatInfo = System.Globalization.DateTimeFormatInfo.CurrentInfo;
+}
+
+@foreach (var group in Model)
+{
+    <h2>@dateFormatInfo.GetMonthName(group.Key)</h2>
+    <table>
+        @foreach (var race in group)
+        {
+            <tr>
+                <td>@race.Date.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a asp-controller="Info" asp-action="ShowRace" asp-route-id="@race.RaceID">@race.Name</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+}
+
+<a asp-controller="Home" asp-action="Menu">Back</a><p> | </p><a asp-controller="Info" asp-action="BuildMap">Races on map</a><p> | </p><a asp-controller="Info" asp-action="SelectRace">One by one</a>

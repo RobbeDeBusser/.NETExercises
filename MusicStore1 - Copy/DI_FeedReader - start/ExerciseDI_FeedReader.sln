@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExerciseDI_FeedReader", "ExerciseDI_FeedReader\ExerciseDI_FeedReader.csproj", "{4E53CF3E-6CE7-4A24-98AA-91C242912FE8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E53CF3E-6CE7-4A24-98AA-91C242912FE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E53CF3E-6CE7-4A24-98AA-91C242912FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E53CF3E-6CE7-4A24-98AA-91C242912FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E53CF3E-6CE7-4A24-98AA-91C242912FE8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A28030B5-6BB0-496A-BB34-AC3F2752AC1C}
+	EndGlobalSection
+EndGlobal

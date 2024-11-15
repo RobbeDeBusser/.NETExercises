@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Main Menu";
+}
+
+<h2>Lesson 1: Introduction</h2>
+
+<a asp-controller="HelloWorld" asp-action="Index">Hello World</a><br />
+<a asp-controller="HelloWorld" asp-action="Welcome"
+   asp-route-name="Rick" asp-route-numTimes="5">Welcome</a><br />
+
+<h2>Lesson 3: Reading Data</h2>
+
+<a asp-controller="Movies" asp-action="List">All movies</a>
+

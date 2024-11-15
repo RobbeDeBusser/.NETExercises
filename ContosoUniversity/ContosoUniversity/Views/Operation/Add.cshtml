@@ -1,0 +1,13 @@
+﻿@model ContosoUniversity.Models.ViewModels.AddOperationViewModel
+
+@{
+    ViewData["Title"] = "Add two Numbers";
+}
+
+<form asp-action="Add">
+       <input asp-for="Number1"/>
+       <input asp-for="Number2" />
+
+       @Model.Result
+       <input type="submit" value="Add" class="btn btn-primary" />
+</form>

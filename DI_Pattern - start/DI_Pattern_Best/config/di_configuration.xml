@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<implementations>
+  <implementation>
+    <interface>DI_Pattern_Best.IContact, DI_Pattern_Best</interface>
+    <instance>DI_Pattern_Best.TelSender, DI_Pattern_Best</instance>
+  </implementation>
+</implementations>

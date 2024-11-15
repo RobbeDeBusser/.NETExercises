@@ -1,0 +1,31 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Overview customers page";
+}
+
+<ul id="customers_list"></ul>
+
+@section Scripts{
+
+    <script>
+        let url = "https://localhost:7280/api/customers";
+        let customersList = document.getElementById("customers_list");
+
+    fetch(url)
+        .then(response => response.json())
+        .then (data => showCustomers(data.$values))
+        .catch (ex => {alert("Error!"); console.error(ex);});
+    
+    function showCustomers(customers)
+    {   
+     customers.forEach(customer =>
+            {
+            let li = document.createElement("li");
+            let text = customer.firstName + ' ' + customer.lastName;
+            li.appendChild(document.createTextNode(text));
+            customersList.appendChild(li);
+            });
+    }
+    </script>
+}
